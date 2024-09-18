@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <iframe
+      id="myIframe"
+      src="http://localhost:3000/demo"
+      width="100%"
+      height="668px"
+      style="border: none"
+      loading="lazy"
+      sandbox="allow-scripts allow-forms allow-same-origin"
+    ></iframe>
+
+    <script>
+      const iframe = document.getElementById("myIframe");
+
+      // Define the message data
+      const messageData = {
+        type: "greeting",
+        content: "Hello from the parent window!",
+      };
+
+      // Ensure iframe is loaded before sending the message
+      iframe.onload = () => {
+        // Send the message to the iframe
+        iframe.contentWindow.postMessage(messageData, "http://localhost:3000");
+      };
+
+      // Add an event listener to receive messages from the iframe
+      window.addEventListener("message", (event) => {
+        // Ensure the message is from the expected origin
+        // if (event.origin !== "http://localhost:3002") {
+        //   return;
+        // }
+        console.log("Message received from iframe:", event.data);
+      });
+    </script>
+  </body>
+</html>
