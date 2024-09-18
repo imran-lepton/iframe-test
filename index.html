@@ -7,7 +7,7 @@
   <body>
     <iframe
       id="myIframe"
-      src="http://localhost:3000/demo"
+      src="https://smartmarket.ai/demo"
       width="100%"
       height="668px"
       style="border: none"
@@ -27,7 +27,7 @@
       // Ensure iframe is loaded before sending the message
       iframe.onload = () => {
         // Send the message to the iframe
-        iframe.contentWindow.postMessage(messageData, "http://localhost:3000");
+        iframe.contentWindow.postMessage(messageData, "https://smartmarket.ai/demo");
       };
 
       // Add an event listener to receive messages from the iframe
